@@ -381,6 +381,32 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
       }
+      
+      
+          public void UserSignOutFunction() {
+
+// Sing Out the User.
+        firebaseAuth.signOut();
+
+        Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(
+                new ResultCallback<Status>() {
+                    @Override
+                    public void onResult(@NonNull Status status) {
+                        finish();
+                    }
+                });
+
+// After logout Hiding sign out button.
+        //   SignOutButton.setVisibility(View.GONE);
+
+// After logout setting up email and name to null.
+        // LoginUserName.setText(null);
+        //LoginUserEmail.setText(null);
+
+// After logout setting up login button visibility to visible.
+        //signInButton.setVisibility(View.VISIBLE);
+    }
+
     private void loadRewarededvideoAd()
     {
         if(!mAd.isLoaded()){

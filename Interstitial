@@ -1,0 +1,14 @@
+ public void showAd()
+    {
+        mInterstitialAd = new InterstitialAd(getApplicationContext());
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mInterstitialAd.loadAd(adRequest);
+        mInterstitialAd.setAdListener(new AdListener() {
+            public void onAdLoaded() {
+                if (mInterstitialAd.isLoaded()) {
+                    mInterstitialAd.show();
+                }
+            }
+        });
+    }
